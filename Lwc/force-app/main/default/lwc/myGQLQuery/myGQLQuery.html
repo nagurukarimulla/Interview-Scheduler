@@ -1,0 +1,41 @@
+<!-- MyGQLQuery.html -->
+<template>
+    <lightning-card title="Account List">
+        <div class="slds-p-around_medium">
+            <!-- Display the loading spinner while data is loading -->
+            <template if:true={graphqlData.isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+            <!-- Display an error message if there's an error -->
+            <template if:true={graphqlData.error}>
+                <p>Error: {graphqlData.error.message}</p>
+            </template>
+            <!-- Display the data if available -->
+            <template if:true={graphqlData.data}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Industry</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Iterate through the accounts and display them -->
+                        <template for:each={graphqlData.data.accounts} for:item="account">
+                            <tr key={account.id}>
+                                <td>{account.id}</td>
+                                <td>{account.name}</td>
+                                <td>{account.industry}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+        </div>
+        <!-- Button to trigger a data refresh -->
+        <div class="slds-p-around_medium">
+            <lightning-button label="Refresh Data" onclick={refresh}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

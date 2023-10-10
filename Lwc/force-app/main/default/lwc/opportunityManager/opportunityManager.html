@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Opportunity Manager">
+        <template if:true={accounts}>
+            <template for:each={accounts} for:item="account">
+                <div key={account.Id} class="slds-card">
+                    <div class="slds-card__header slds-grid">
+                        <h2 class="slds-text-heading_small slds-col">{account.Name}</h2>
+                        <lightning-button class="slds-col" label="Create Opportunity" onclick={handleCreateOpportunity} data-id={account.Id}></lightning-button>
+                        <lightning-button class="slds-col" label="Edit Account" onclick={handleEditAccount} data-id={account.Id}></lightning-button>
+                    </div>
+                    <div class="slds-card__body">
+                        <lightning-layout>
+                            <template for:each={account.Opportunities} for:item="opportunity">
+                                <lightning-layout-item key={opportunity.Id} size="12">
+                                    <div class="slds-box">
+                                        <p><b>Name:</b> {opportunity.Name}</p>
+                                        <p><b>Stage:</b> {opportunity.StageName}</p>
+                                        <p><b>Amount:</b> {opportunity.Amount}</p>
+                                        <p><b>Close Date:</b> {opportunity.CloseDate}</p>
+                                    </div>
+                                </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                    </div>
+                </div>
+            </template>
+        </template>
+        <template if:false={accounts}>
+            <p>No accounts with opportunities found.</p>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,23 @@
+<!-- navItemsExample.html -->
+<template>
+    <lightning-card title="Navigation Items Example">
+        <div class="slds-p-around_medium">
+            <template if:true={propertyOrFunction.data}>
+                <!-- Iterate through the navigation items -->
+                <ul>
+                    <template for:each={propertyOrFunction.data} for:item="navItem">
+                        <li key={navItem.id}>{navItem.label}</li>
+                    </template>
+                </ul>
+            </template>
+            <template if:true={propertyOrFunction.error}>
+                <!-- Display an error message if there's an error -->
+                <p>Error: {propertyOrFunction.error.body.message}</p>
+            </template>
+            <template if:true={propertyOrFunction.isLoading}>
+                <!-- Show a loading spinner while data is loading -->
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,24 @@
+<!-- fileUploader.html -->
+<template>
+    <lightning-card title="File Uploader">
+        <div class="slds-p-around_medium">
+            <!-- File Upload Component -->
+            <lightning-file-upload
+                label="Upload Files"
+                name="fileUploader"
+                accept={acceptedFormats}
+                record-id={recordId}
+                onuploadfinished={handleUploadFinished}
+                multiple
+            ></lightning-file-upload>
+            
+            <!-- Lightning Datatable to display uploaded files -->
+            <lightning-datatable
+                key-field="id"
+                data={fileList}
+                columns={columns}
+                hide-checkbox-column
+            ></lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

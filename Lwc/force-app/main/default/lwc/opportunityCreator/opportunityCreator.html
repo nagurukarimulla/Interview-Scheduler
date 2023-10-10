@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Create Opportunity">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Opportunity Name" value={opportunityName} onchange={handleOpportunityNameChange}></lightning-input>
+            <lightning-input label="Stage Name" value={stageName} onchange={handleStageNameChange}></lightning-input>
+            <lightning-input label="Amount" type="number" step="0.01" value={amount} onchange={handleAmountChange}></lightning-input>
+            <lightning-input label="Close Date" type="date" value={closeDate} onchange={handleCloseDateChange}></lightning-input>
+            <div class="slds-m-top_medium">
+                <lightning-button label="Create Opportunity" onclick={handleCreateOpportunity}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>
